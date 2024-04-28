@@ -1,0 +1,37 @@
+.open-positions-main {
+  .open-positions-add {
+    padding-top: 5%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5%;
+    button {
+      // font-size: 16px;
+      color: white;
+      background-color: rgb(120, 82, 244);
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+  .open-positions-card {
+    padding-top: 5%;
+    display: flex;
+    gap: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+    flex-wrap: wrap;
+    .open-positions-card-single {
+      padding: 5px;
+      border: 2px solid darkgray;
+      // padding: 20px 20px;
+      height: 80px;
+      width: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}

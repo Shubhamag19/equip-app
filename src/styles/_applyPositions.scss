@@ -1,0 +1,51 @@
+.apply-positions-main{
+  padding-top: 8vh;
+  padding-left: 10%;
+  padding-right: 10%;
+  h1{
+    font-size: 24px;
+    font-weight: 600;
+  }
+  h2{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    span{
+      margin-left: 5px;
+      font-weight: 400;
+    }
+  }
+  .apply-positions-description{
+    margin-top: 40px;
+  }
+  .apply-positions-user-data{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    label {
+      font-size: 16px;
+      // font-weight: 500;
+    }
+    input {
+      position: absolute;
+      left: 300px;
+      padding: 10px 5px;
+      width: 250px;
+      border: 2px solid darkgray;
+      border-radius: 5px;
+    }
+  }
+  .apply-positions-button{
+    margin-top: 80px;
+    button {
+      width: fit-content;
+      color: white;
+      background-color: rgb(120, 82, 244);
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}

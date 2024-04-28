@@ -1,0 +1,43 @@
+export const positionsData = [
+  {
+    id: 1,
+    title: "React Dev",
+    experience: "2",
+    location: "Remote",
+    salary: 20,
+    description:
+      "<p>We are looking for a skilled React developer to join our team. The ideal candidate will be responsible for developing user-facing features using React.js, building reusable components and libraries, and ensuring the technical feasibility of UI/UX designs.</p><p><span style='color: var(--tw-prose-bold);'>Key Points:</span></p><ol><li>Develop user-facing features using React.js</li><li>Build reusable components and libraries for future use</li><li>Ensure technical feasibility of UI/UX designs</li><li>Collaborate with back-end developers and designers for seamless integration</li><li>Stay updated with latest industry trends and technologies</li><li>Write clean, efficient, and maintainable code</li></ol><p><br></p>",
+    applicantNameNeeded: true,
+    applicantEmailNeeded: true,
+    applicantPhoneNeeded: false,
+    applicantLinkedInNeeded: true,
+    applicantCompanyNeeded: false,
+  },
+  {
+    id: 2,
+    title: "Python Dev",
+    experience: "4",
+    location: "In-person",
+    salary: 25,
+    description:
+      "<p>We are seeking a talented Python developer to join our team. The role involves developing Python applications, implementing robust and scalable backend services, and collaborating with cross-functional teams to deliver high-quality software solutions.</p><p><br></p><p><span style='color: var(--tw-prose-bold);'>Key Points:</span></p><ol><li>Develop Python applications for various use cases such as web development, data analysis, and automation tasks.</li><li>Design and implement scalable backend services using Python frameworks such as Django or Flask.</li><li>Write efficient, reusable, and maintainable code in Python.</li><li>Collaborate with front-end developers, data scientists, and business analysts to deliver integrated solutions.</li><li>Conduct code reviews, testing, and debugging to ensure software quality and performance.</li><li>Stay updated with Python best practices, libraries, and industry trends.</li></ol><p><br></p>",
+    applicantNameNeeded: true,
+    applicantEmailNeeded: true,
+    applicantPhoneNeeded: true,
+    applicantLinkedInNeeded: false,
+    applicantCompanyNeeded: false,
+  },
+  {
+    id: 3,
+    title: "Product Marketer",
+    experience: "7",
+    location: "In-person",
+    salary: 30,
+    description: "<p>We are looking for a dynamic Product Marketer to join our team. The role involves developing and executing strategic marketing plans to drive product awareness, adoption, and sales. The ideal candidate will have a strong understanding of market trends, customer behavior, and digital marketing strategies to create compelling campaigns and messaging.</p><p><span style='color: var(--tw-prose-bold);'>Key Points:</span></p><ol><li>Develop and execute strategic marketing plans to drive product awareness, adoption, and sales.</li><li>Conduct market research to identify customer needs, market trends, and competitor strategies.</li><li>Create compelling messaging, positioning, and value propositions for target audiences.</li><li>Collaborate with cross-functional teams including product management, sales, and design to launch and promote products effectively.</li><li>Develop marketing collateral such as presentations, whitepapers, case studies, and website content.</li></ol><p><br></p>",
+    applicantNameNeeded: true,
+    applicantEmailNeeded: true,
+    applicantPhoneNeeded: true,
+    applicantLinkedInNeeded: false,
+    applicantCompanyNeeded: true,
+  },
+];

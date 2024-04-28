@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState, useRef } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import OpenPositions from "./pages/OpenPositions";
+import CreatePositions from "./pages/CreatePositions";
+import ApplicationStatus from "./pages/ApplicationStatus";
+import ApplyPosition from "./pages/ApplyPosition";
+
+import "./styles/index.scss";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <>
+    <Routes>
+      <Route path="/" element={<OpenPositions />} />
+      <Route path="/create-position" element={<CreatePositions />} />
+      <Route path="/:position/application-status" element={<ApplicationStatus />} />
+      <Route path="/:position/apply" element={<ApplyPosition />} />
+    </Routes>
+  </>
 }
 
 export default App;
