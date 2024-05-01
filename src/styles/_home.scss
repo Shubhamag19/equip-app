@@ -1,0 +1,44 @@
+.home-main {
+  .home-wrap {
+    // background-color: pink;
+    width: 60vw;
+    height: 30vh;
+    margin: auto;
+    margin-top: 10vh;
+    display: flex;
+    justify-content: space-between;
+    .home-single-card {
+      // background-color: yellow;
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .home-single-card-details {
+        background-color: $color-card-background;
+        border: 2px solid $color-card-border;
+        border-radius: 5px;
+
+        width: 70%;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 500;
+        color: white;
+      }
+      .home-single-card-details:hover {
+        // border: 2px solid #2b4e9c;
+        box-shadow: 5px 5px 5px $color-card-shadow;
+      }
+    }
+    .home-vertical-line {
+      width: 3px;
+      height: 170%;
+      // background-color: lightgray;
+      background-color: $color-card-background;
+      // margin-top: 5%;
+    }
+  }
+}

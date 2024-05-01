@@ -1,37 +1,73 @@
 .open-positions-main {
+  // background-color: yellow;
   .open-positions-add {
-    padding-top: 5%;
+    // background-color: greenyellow;
+    // padding-top: 5%;
+    margin-top: 30px;
     display: flex;
     justify-content: flex-end;
     padding-right: 5%;
     button {
       // font-size: 16px;
       color: white;
-      background-color: rgb(120, 82, 244);
+      background-color: $color-submit-btn;
       padding: 10px 15px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
   }
+  .open-positions-header-wrap {
+    margin-top: 20px;
+    // background-color: pink;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    .open-positions-header {
+      padding: 10px 15px;
+      background-color: $color-navigation-bar;
+      color: white;
+      // text-decoration: underline;
+      font-size: 20px;
+      width: auto;
+      width: fit-content;
+    }
+    .open-positions-header-arrow {
+      // background-color: red;
+      width: 0;
+      height: 0;
+      border-width: 24px;
+      border-style: solid;
+      border-color: transparent transparent transparent $color-navigation-bar;
+    }
+  }
   .open-positions-card {
-    padding-top: 5%;
+    // background-color: yellowgreen;
+    // padding-top: 5%;
+    margin-top: 30px;
     display: flex;
     gap: 50px;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
     flex-wrap: wrap;
     .open-positions-card-single {
       padding: 5px;
-      border: 2px solid darkgray;
+      color: white;
+      font-size: 18px;
+      background-color: $color-card-background;
+      border: 2px solid $color-card-border;
+      border-radius: 5px;
       // padding: 20px 20px;
-      height: 80px;
-      width: 120px;
+      height: 100px;
+      width: 180px;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       cursor: pointer;
+    }
+    .open-positions-card-single:hover {
+      box-shadow: 5px 5px 5px $color-card-shadow;
     }
   }
 }

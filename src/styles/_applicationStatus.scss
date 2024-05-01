@@ -1,63 +1,84 @@
 .application-status-main {
-  // background-color: yellowgreen;
-  padding-top: 5vh;
-  padding-left: 10%;
-  padding-right: 10%;
-  .application-status-header {
-    font-size: 20px;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    h1 {
-      font-size: 18px;
-      font-weight: 600;
-    }
-  }
-  .application-status-body {
-    // background-color: yellow;
-    margin-top: 5vh;
-    .application-status-body-container {
+  .application-status-wrap {
+    // background-color: yellowgreen;
+    padding-top: 3vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    .application-status-header {
+      font-size: 20px;
+      font-weight: 400;
       display: flex;
-      .application-status-body-container-single {
-        margin: 10px;
-        min-height: 50vh;
-        // height: 300px;
-        border: 2px solid darkgray;
-        flex: 1;
-        h2 {
-          text-align: center;
-          font-size: 16px;
-          font-weight: 600;
-          margin-top: 20px;
-          margin-bottom: 20px;
-        }
-        .usercard-arrow {
-          margin-top: -2px;
-          position: absolute;
-          width: 0;
-          height: 0;
-          border-width: 6px;
-          border-style: solid;
-          border-color: transparent transparent black transparent;
-          z-index: 2;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-        .usercard-details {
-          position: absolute;
-          z-index: 1;
-          background-color: black;
-          color: white;
-          width: 120%;
-          margin-left: -12%;
-          padding: 10px 20px;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          margin-top: 10px;
+      align-items: center;
+      gap: 10px;
+      .application-status-link{
+        font-size: 22px;
+        text-decoration: underline;
+        cursor: pointer;
+        font-weight: 500;
+      }
+      h1 {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+    .application-status-body {
+      // background-color: yellow;
+      margin-top: 4vh;
+      .application-status-body-container {
+        // background-color: pink;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        .application-status-body-container-single {
+          // margin: 0 10px;
+          min-height: 60vh;
+          // height: 300px;
+          // background-color: yellowgreen;
+          border: 2px solid $color-navigation-bar;
           border-radius: 5px;
+          flex: 1;
+          .application-status-body-container-single-header {
+            background-color: $color-navigation-bar;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            p {
+              // text-align: center;
+              font-size: 16px;
+              font-weight: 600;
+              color: white;
+              // margin-top: 20px;
+              // margin-bottom: 20px;
+            }
+          }
+          .usercard-arrow {
+            margin-top: 2px;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent $color-user-details transparent;
+            z-index: 2;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+          .usercard-details {
+            position: absolute;
+            z-index: 1;
+            background-color: $color-user-details;
+            color: white;
+            width: 120%;
+            margin-left: -12%;
+            padding: 10px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 14px;
+            border-radius: 5px;
+          }
         }
       }
     }

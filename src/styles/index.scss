@@ -1,3 +1,11 @@
+$color-card-background: #6b96f2;
+$color-card-border: #4072e0;
+$color-card-shadow: #92b0f0;
+$color-submit-btn: rgb(120, 82, 244);
+$color-navigation-bar: #27244f;
+$color-user-details: #147360;
+$color-user-details: #5d2a78;
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +14,9 @@
   font-family: "Inter", sans-serif;
 }
 
+@import "./home";
 @import "./openPositions";
 @import "./createPositions";
 @import "./applyPositions";
 @import "./applicationStatus";
+@import "./navigation";

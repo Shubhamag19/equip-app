@@ -9,11 +9,12 @@ const UserCard = ({ user }) => {
   });
 
   const style = {
-    marginTop: "10px",
-    backgroundColor: "powderblue",
+    backgroundColor: "#6b96f2",
+    color: "white",
+    border: "2px solid #4072e0",
     borderRadius: "5px",
-    margin: "5px",
-    padding: "5px",
+    margin: "10px 10px",
+    padding: "5px 10px",
     cursor: "grab",
     transform: transform
       ? `translate3d(${transform.x}px, ${transform.y}px, 0)`

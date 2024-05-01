@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
 import positionsReducer from "./slices/positionsSlice";
-import usersSlice from "./slices/usersSlice";
+import usersReducer from "./slices/usersSlice";
+import loginReducer from "./slices/loginSlice";
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 
@@ -12,7 +13,8 @@ const persistConfig = {
 
 const reducers = combineReducers({
   positions: positionsReducer,
-  users: usersSlice,
+  users: usersReducer,
+  login: loginReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { usersAction } from "../redux/slices/usersSlice";
+import Navigation from "../components/Navigation";
 
 const ApplyPosition = () => {
   const navigate = useNavigate();
@@ -69,92 +70,96 @@ const ApplyPosition = () => {
       linkedin: "",
       company: "",
     });
-    navigate("/");
+    navigate("/open-positions");
   };
 
   return (
     <div className="apply-positions-main">
-      <h1>Acme Inc</h1>
-      <h2>
-        {applyingPosition} <span>(3 years)</span>
-      </h2>
-      <div className="apply-positions-description">
-        <div
-          dangerouslySetInnerHTML={{ __html: currentPosition.description }}
-        />
+      <Navigation pageName="Apply Position" />
+      <div className="apply-positions-wrap">
+        <h1>Acme Inc</h1>
+        <h2>
+          {applyingPosition} <span>(3 years)</span>
+        </h2>
+        <div className="apply-positions-description">
+          <div className="apply-positions-description-header">Description</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: currentPosition.description }}
+          />
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="apply-positions-user-data">
+            {currentPosition.applicantNameNeeded && (
+              <div>
+                <label htmlFor="title">Name <span>*</span></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            )}
+            {currentPosition.applicantEmailNeeded && (
+              <div>
+                <label htmlFor="title">Email <span>*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            )}
+            {currentPosition.applicantPhoneNeeded && (
+              <div>
+                <label htmlFor="title">Phone <span>*</span></label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            )}
+            {currentPosition.applicantLinkedInNeeded && (
+              <div>
+                <label htmlFor="title">Linkedin <span>*</span></label>
+                <input
+                  type="text"
+                  id="linkedin"
+                  name="linkedin"
+                  value={formData.linkedin}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            )}
+            {currentPosition.applicantCompanyNeeded && (
+              <div>
+                <label htmlFor="title">Current company <span>*</span></label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            )}
+          </div>
+          <div className="apply-positions-button">
+            <button>Submit</button>
+          </div>
+        </form>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="apply-positions-user-data">
-          {currentPosition.applicantNameNeeded && (
-            <div>
-              <label htmlFor="title">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          )}
-          {currentPosition.applicantEmailNeeded && (
-            <div>
-              <label htmlFor="title">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          )}
-          {currentPosition.applicantPhoneNeeded && (
-            <div>
-              <label htmlFor="title">Phone</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          )}
-          {currentPosition.applicantLinkedInNeeded && (
-            <div>
-              <label htmlFor="title">Linkedin</label>
-              <input
-                type="text"
-                id="linkedin"
-                name="linkedin"
-                value={formData.linkedin}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          )}
-          {currentPosition.applicantCompanyNeeded && (
-            <div>
-              <label htmlFor="title">Current company</label>
-              <input
-                type="text"
-                id="company"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          )}
-        </div>
-        <div className="apply-positions-button">
-          <button>Submit</button>
-        </div>
-      </form>
     </div>
   );
 };

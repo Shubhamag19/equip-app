@@ -14,6 +14,7 @@ import {
 } from "@dnd-kit/sortable";
 import { RiTriangleFill } from "react-icons/ri";
 
+import Navigation from "../components/Navigation";
 import UserCard from "../components/UserCard";
 import Droppable from "../components/Droppable";
 
@@ -73,47 +74,57 @@ const ApplicationStatus = () => {
   };
 
   const handleMoveToHome = () => {
-    navigate("/");
+    navigate("/open-positions");
   };
 
   return (
     <div className="application-status-main">
-      <div className="application-status-header">
-        <RiTriangleFill
-          style={{ fontSize: "18px", cursor: "pointer" }}
-          onClick={handleMoveToHome}
-        />
-        &gt; <h1>{applyingPosition}</h1>
-      </div>
-      <div className="application-status-body">
-        <DndContext
-          sensors={sensors}
-          collisionDetection={closestCenter}
-          onDragEnd={handleDragEnd}
-        >
-          <div className="application-status-body-container">
-            {containers.map((container) => (
-              <div
-                key={container}
-                className="application-status-body-container-single"
-              >
-                <h2>{container?.toUpperCase()}</h2>
-                <Droppable id={container.toLowerCase()}>
-                  <SortableContext
-                    items={users.filter((user) => user.container === container)}
-                    strategy={sortableKeyboardCoordinates}
-                  >
-                    {users
-                      .filter((user) => user.container === container)
-                      .map((user) => (
-                        <UserCard key={user.id} user={user} />
-                      ))}
-                  </SortableContext>
-                </Droppable>
-              </div>
-            ))}
+      <Navigation pageName="Application Status" />
+      <div className="application-status-wrap">
+        <div className="application-status-header">
+          {/* <RiTriangleFill
+            style={{ fontSize: "18px", cursor: "pointer" }}
+            onClick={handleMoveToHome}
+          /> */}
+          <div className="application-status-link" onClick={handleMoveToHome}>
+            Home
           </div>
-        </DndContext>
+          &gt; <h1>{applyingPosition}</h1>
+        </div>
+        <div className="application-status-body">
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+          >
+            <div className="application-status-body-container">
+              {containers.map((container) => (
+                <div
+                  key={container}
+                  className="application-status-body-container-single"
+                >
+                  <div className="application-status-body-container-single-header">
+                    <p>{container?.toUpperCase()}</p>
+                  </div>
+                  <Droppable id={container.toLowerCase()}>
+                    <SortableContext
+                      items={users.filter(
+                        (user) => user.container === container
+                      )}
+                      strategy={sortableKeyboardCoordinates}
+                    >
+                      {users
+                        .filter((user) => user.container === container)
+                        .map((user) => (
+                          <UserCard key={user.id} user={user} />
+                        ))}
+                    </SortableContext>
+                  </Droppable>
+                </div>
+              ))}
+            </div>
+          </DndContext>
+        </div>
       </div>
     </div>
   );

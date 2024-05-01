@@ -1,0 +1,23 @@
+.open-positions-navigation {
+  // margin-top: 3%;
+  padding: 1% 5%;
+  height: 60px;
+  background-color: $color-navigation-bar;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .open-positions-navigation-header {
+    color: white;
+    font-size: 22px;
+  }
+  .open-positions-logo {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    cursor: pointer;
+    .open-positions-logo-text {
+      color: white;
+      font-size: 18px;
+    }
+  }
+}

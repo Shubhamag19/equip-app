@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { RiTriangleFill } from "react-icons/ri";
+import Navigation from "../components/Navigation";
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -29,6 +30,7 @@ const CreatePositions = () => {
   });
 
   const [jobDescription, setJobDescription] = useState("");
+  const [jdError, setJdError] = useState(false);
 
   const handleJDChange = (value) => {
     setJobDescription(value);
@@ -36,6 +38,7 @@ const CreatePositions = () => {
       ...prevData,
       description: value,
     }));
+    setJdError(false);
   };
 
   const handleChange = (e) => {
@@ -48,6 +51,11 @@ const CreatePositions = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!jobDescription || jobDescription === "<p><br></p>") {
+      setJdError(true);
+      return;
+    }
 
     const updatedData = {
       id: Date.now(),
@@ -67,11 +75,11 @@ const CreatePositions = () => {
       salary: "",
       description: "",
     });
-    navigate("/");
+    navigate("/open-positions");
   };
 
   const handleMoveToHome = () => {
-    navigate("/");
+    navigate("/open-positions");
   };
 
   const handleDataNeededChange = (e) => {
@@ -98,147 +106,170 @@ const CreatePositions = () => {
 
   return (
     <div className="create-positions-main">
-      <div className="create-positions-header">
-        <RiTriangleFill
-          style={{ fontSize: "18px", cursor: "pointer" }}
-          onClick={handleMoveToHome}
-        />
-        &gt; <h1>Create Position</h1>
-      </div>
-      <div className="create-positions-body">
-        <form onSubmit={handleSubmit}>
-          <div className="create-positions-body-single">
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              required
-            />
+      <Navigation pageName="Create Position" />
+      <div className="create-positions-wrap">
+        <div className="create-positions-header">
+          {/* <RiTriangleFill
+            style={{ fontSize: "18px", cursor: "pointer" }}
+            onClick={handleMoveToHome}
+          /> */}
+          <div className="create-positions-link" onClick={handleMoveToHome}>
+            Home
           </div>
-          <div className="create-positions-body-single">
-            <label htmlFor="experience">Experience</label>
-            <input
-              type="number"
-              id="experience"
-              name="experience"
-              value={formData.experience}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="create-positions-body-location">
-            <label htmlFor="location">Location</label>
-            <div className="create-positions-body-location-div">
-              <div className="create-positions-body-location-div-radio">
-                <input
-                  type="radio"
-                  name="location"
-                  value="In-person"
-                  checked={formData.location === "In-person"}
-                  onChange={handleChange}
-                />
-                <label>In-person</label>
-              </div>
-              <div className="create-positions-body-location-div-radio">
-                <input
-                  type="radio"
-                  name="location"
-                  value="Remote"
-                  checked={formData.location === "Remote"}
-                  onChange={handleChange}
-                />
-                <label>Remote</label>
+          &gt; <h1>Create Position</h1>
+        </div>
+        <div className="create-positions-body">
+          <form onSubmit={handleSubmit}>
+            <div className="create-positions-body-single">
+              <label htmlFor="title">
+                Title <span>*</span>
+              </label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="create-positions-body-single">
+              <label htmlFor="experience">
+                Experience <span>*</span>
+              </label>
+              <input
+                type="number"
+                id="experience"
+                name="experience"
+                value={formData.experience}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="create-positions-body-location">
+              <label htmlFor="location">Location</label>
+              <div className="create-positions-body-location-div">
+                <div className="create-positions-body-location-div-radio">
+                  <input
+                    type="radio"
+                    name="location"
+                    value="In-person"
+                    checked={formData.location === "In-person"}
+                    onChange={handleChange}
+                  />
+                  <label>In-person</label>
+                </div>
+                <div className="create-positions-body-location-div-radio">
+                  <input
+                    type="radio"
+                    name="location"
+                    value="Remote"
+                    checked={formData.location === "Remote"}
+                    onChange={handleChange}
+                  />
+                  <label>Remote</label>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="create-positions-body-single">
-            <label htmlFor="salary">Salary</label>
-            <input
-              type="number"
-              id="salary"
-              name="salary"
-              value={formData.salary}
-              onChange={handleChange}
-              required
-            />
-            <span>lpa</span>
-          </div>
-          <div className="create-positions-body-jd">
-            <label htmlFor="description">Job Description</label>
-            <ReactQuill
-              theme="snow"
-              modules={module}
-              value={jobDescription}
-              onChange={handleJDChange}
-              required
-              style={{ width: "600px", height: "200px", marginBottom: "50px" }}
-            />
-          </div>
-          <div className="create-positions-data">
-            <div>Data Needed</div>
-            <div className="create-positions-data-wrap">
-              <div className="create-positions-data-single">
-                <input
-                  type="checkbox"
-                  name="name"
-                  id="name"
-                  value="name"
-                  checked={userDataNeeded.name}
-                  // onChange={() => {}}
-                />
-                <label htmlFor="name">Name</label>
-              </div>
-              <div className="create-positions-data-single">
-                <input
-                  type="checkbox"
-                  name="email"
-                  id="email"
-                  value="email"
-                  checked={userDataNeeded.email}
-                  // onChange={() => {}}
-                />
-                <label htmlFor="email">Email</label>
-              </div>
-              <div className="create-positions-data-single">
-                <input
-                  type="checkbox"
-                  name="phone"
-                  id="phone"
-                  value="phone"
-                  checked={userDataNeeded.phone}
-                  onChange={handleDataNeededChange}
-                />
-                <label htmlFor="phone">Phone number</label>
-              </div>
-              <div className="create-positions-data-single">
-                <input
-                  type="checkbox"
-                  name="linkedin"
-                  id="linkedin"
-                  value="linkedin"
-                  checked={userDataNeeded.linkedin}
-                  onChange={handleDataNeededChange}
-                />
-                <label htmlFor="linkedin">LinkedIn URL</label>
-              </div>
-              <div className="create-positions-data-single">
-                <input
-                  type="checkbox"
-                  name="company"
-                  id="company"
-                  value="company"
-                  checked={userDataNeeded.company}
-                  onChange={handleDataNeededChange}
-                />
-                <label htmlFor="company">Current company</label>
+            <div className="create-positions-body-single">
+              <label htmlFor="salary">Salary</label>
+              <input
+                type="number"
+                id="salary"
+                name="salary"
+                value={formData.salary}
+                onChange={handleChange}
+                // required
+              />
+              <div className="create-positions-body-single-salary">lpa</div>
+            </div>
+            <div className="create-positions-body-jd">
+              <label htmlFor="description">
+                Job Description <span>*</span>
+              </label>
+              <ReactQuill
+                theme="snow"
+                modules={module}
+                value={jobDescription}
+                onChange={handleJDChange}
+                required
+                style={{
+                  width: "600px",
+                  height: "200px",
+                  marginBottom: "50px",
+                }}
+              />
+              {jdError && (
+                <div className="create-positions-body-jd-error">
+                  This is a required field
+                </div>
+              )}
+            </div>
+            <div className="create-positions-data">
+              <div>Data Needed</div>
+              <div className="create-positions-data-wrap">
+                <div className="create-positions-data-single">
+                  <input
+                    type="checkbox"
+                    name="name"
+                    id="name"
+                    value="name"
+                    checked={userDataNeeded.name}
+                    // onChange={() => {}}
+                    disabled={true}
+                  />
+                  <label htmlFor="name">Name</label>
+                </div>
+                <div className="create-positions-data-single">
+                  <input
+                    type="checkbox"
+                    name="email"
+                    id="email"
+                    value="email"
+                    checked={userDataNeeded.email}
+                    // onChange={() => {}}
+                    disabled={true}
+                  />
+                  <label htmlFor="email">Email</label>
+                </div>
+                <div className="create-positions-data-single">
+                  <input
+                    type="checkbox"
+                    name="phone"
+                    id="phone"
+                    value="phone"
+                    checked={userDataNeeded.phone}
+                    onChange={handleDataNeededChange}
+                  />
+                  <label htmlFor="phone">Phone number</label>
+                </div>
+                <div className="create-positions-data-single">
+                  <input
+                    type="checkbox"
+                    name="linkedin"
+                    id="linkedin"
+                    value="linkedin"
+                    checked={userDataNeeded.linkedin}
+                    onChange={handleDataNeededChange}
+                  />
+                  <label htmlFor="linkedin">LinkedIn URL</label>
+                </div>
+                <div className="create-positions-data-single">
+                  <input
+                    type="checkbox"
+                    name="company"
+                    id="company"
+                    value="company"
+                    checked={userDataNeeded.company}
+                    onChange={handleDataNeededChange}
+                  />
+                  <label htmlFor="company">Current company</label>
+                </div>
               </div>
             </div>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
   );
